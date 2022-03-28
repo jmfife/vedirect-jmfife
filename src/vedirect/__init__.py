@@ -1,2 +1,2 @@
 from .vedirect import VEDirect
-from .vedirect_device_emulator import VEDirectDeviceEmulator
+from .vedirect_asyncio import VEDirectAsyncio
