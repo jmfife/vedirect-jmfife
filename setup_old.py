@@ -1,6 +1,6 @@
 from setuptools import setup
 
-setup(name='vedirect-jmfife',
+setup(name='vedirect',
       version='0.3',
       description='Victron VE.Direct decoder for Python, forked from karioja',
       url='https://github.com/jmfife/vedirect',
