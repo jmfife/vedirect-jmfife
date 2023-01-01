@@ -128,9 +128,9 @@ class VEDirect:
         'H21': {'key': 'maximumPowerToday', 'f': int},  # W
         'IL': {'key': 'loadCurrent', 'mx': 0.001},
         'PID': {'key': 'productId'},
-        'H20': {'key': 'yieldToday', 'mx': 0.01},  # kWh
+        'H20': {'key': 'yieldToday', 'mx': 0.01},  # 0.01 kWh
         'H23': {'key': 'maximumPowerYesterday', 'f': int},  # W
-        'H22': {'key': 'yieldYesterday', 'mx': 0.01},  # kWh
+        'H22': {'key': 'yieldYesterday', 'mx': 0.01},  # 0.01 kWh
         'HSDS': {'key': 'daySequenceNumber', 'f': int},
         'SER#': {'key': 'serialNumber'},
         'V': {'key': 'batteryVoltage', 'mx': 0.001},
