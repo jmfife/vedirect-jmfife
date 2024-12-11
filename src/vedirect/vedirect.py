@@ -244,6 +244,26 @@ class VEDirect:
         'W': ['W', 1, 0]
     }
 
+    mon = {
+        "Solar charger": -9,
+        "Wind turbine": -8,
+        "Shaft generator": -7,
+        "Alternator" : -6,
+        "Fuel cell" : -5,
+        "Water generator" : -4,
+        "DC/DC charger": -3,
+        "AC charger": -2,
+        "Generic source": -1,
+        "Battery monitor (BMV)": 0,
+        "Generic load": 1,
+        "Electric drive" : 2,
+        "Fridge" : 3 ,
+        "Water pump" : 4,
+        "Bilge pump" : 5,
+        "DC system" : 6,
+        "Inverter" :7 
+    }
+    
     def __init__(self, serialport='', timeout=60, emulate=''):
         """ Constructor for a Victron VEDirect serial communication session.
 
