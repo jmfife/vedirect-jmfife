@@ -7,15 +7,34 @@ This is a forked version of a package originally created by Janne Kario (https:/
 ## Installation
 
 To install directly from GitHub:
+
 ```
-$ python3 -m pip install "git+https://github.com/jmfife/vedirect[examples]"
+$ python3 -m pip install "git+https://github.com/Jordan-seebyte/vedirect-JL"
 ```
 
-If you have cloned or forked the repo already to your local directory and want to use it in live (editable mode):
+[NOT SURE IF THIS STILL WORKS] If you have cloned or forked the repo already to your local directory and want to use it in live (editable mode):
 ```
-$ python3 -m pip install -e ".[examples]"
+$ python3 -m pip install -e "."
 ```
-Note in both cases above, the dependencies needed to run the examples are also installed.
+
+If you want to build the repo into a whl file, run the following:
+
+```
+python setup.py bdist_wheel
+
+```
+
+If you want to build the repo into a tar.gz file, run the following:
+
+```
+python setup.py sdist
+
+```
+If you want to install the built library you can by doing the following:
+
+```
+python -m pip install [LOCATION OF THE TAR>.GZ or the WHL FILE]
+```
 
 ## Check
 
