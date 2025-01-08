@@ -1,10 +1,11 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-#
-# Forked from karioja at https://github.com/karioja/vedirect
-#
 # 2019-01-16 JMF Modified for Python 3 and updated protocol from
 # https://www.sv-zanshin.com/r/manuals/victron-ve-direct-protocol.pdf
+#
+# Forked from jmfife https://github.com/jmfife/vedirect in 2025
+# Now called https://github.com/Jordan-seebyte/vedirect-JL
+
 
 import serial
 import argparse
