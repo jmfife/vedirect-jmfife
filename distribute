@@ -5,5 +5,5 @@ python3 -m build
 python3 -m twine upload --skip-existing dist/*
 
 
-# users can also install from the Git repo using "python3 -m pip install git+https://github.com/jmfife/vedirect"
+# users can also install from the Git repo using "python3 -m pip install git+https://github.com/Jordan-seebyte/vedirect-JL"
 

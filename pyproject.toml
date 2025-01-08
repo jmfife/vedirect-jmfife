@@ -3,10 +3,10 @@ requires = ["setuptools>=54.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "vedirect_jmfife"
-version = "1.1.0"
+name = "vedirect-JL"
+version = "1.1.1"
 authors = [
-  { name="J. M. Fife", email="jmfife@gmail.com" },
+  { name="Jordan Liss", email="jordanliss13@gmail.com" },
 ]
 description = "Read Victron VEDirect Devices"
 readme = "README.md"

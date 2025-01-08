@@ -1,15 +1,16 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-#
-# Forked from karioja at https://github.com/karioja/vedirect
-#
 # 2019-01-16 JMF Modified for Python 3 and updated protocol from
 # https://www.sv-zanshin.com/r/manuals/victron-ve-direct-protocol.pdf
+#
+# Forked from jmfife https://github.com/jmfife/vedirect in 2025
+# Now called https://github.com/Jordan-seebyte/vedirect-JL
+
 
 import serial
 import argparse
 import time
-from .vedirect_device_emulator import VEDirectDeviceEmulator
+# from .vedirect_device_emulator import VEDirectDeviceEmulator
 import sys
 import logging
 log = logging.getLogger(__name__)
@@ -223,13 +224,16 @@ class VEDirect:
              'ERR': int_base_guess, 'CS': int_base_guess, 'BMV': str, 'FW': str,
              'PID': str, 'SER#': str, 'HSDS': int_base_guess,
              'MODE': int_base_guess, 'AC_OUT_V': int, 'AC_OUT_I': int, 'AC_OUT_S': int,
-             'WARN': int_base_guess, 'MPPT': int_base_guess}
+             'WARN': int_base_guess, 'MPPT': int_base_guess, 'MON': int}
 
     @staticmethod
     def typecast(payload_dict):
         new_dict = {}
         for key, val in payload_dict.items():
-            new_dict[key] = VEDirect.types[key](val)
+            try:
+                new_dict[key] = VEDirect.types[key](val)
+            except Exception as e:
+                print("Had an error when parsing the VEDirect types. The error was {}".format(e))
         return new_dict
 
     fmt = {
@@ -244,7 +248,27 @@ class VEDirect:
         'W': ['W', 1, 0]
     }
 
-    def __init__(self, serialport='', timeout=60, emulate=''):
+    mon = {
+        "Solar charger": -9,
+        "Wind turbine": -8,
+        "Shaft generator": -7,
+        "Alternator" : -6,
+        "Fuel cell" : -5,
+        "Water generator" : -4,
+        "DC/DC charger": -3,
+        "AC charger": -2,
+        "Generic source": -1,
+        "Battery monitor (BMV)": 0,
+        "Generic load": 1,
+        "Electric drive" : 2,
+        "Fridge" : 3 ,
+        "Water pump" : 4,
+        "Bilge pump" : 5,
+        "DC system" : 6,
+        "Inverter" :7 
+    }
+    
+    def __init__(self, serialport='/dev/ttyUSB0', timeout=60, emulate=''):
         """ Constructor for a Victron VEDirect serial communication session.
 
         Params:
@@ -388,10 +412,11 @@ def main():
     parser.add_argument('--loglevel', help='logging level - one of [DEBUG, INFO, WARNING, ERROR, CRITICAL]',
                         default='ERROR')
     args = parser.parse_args()
+    args.port = '/dev/ttyUSB0'
     logging.basicConfig(level=args.loglevel.upper())
-    if not args.port and not args.emulate:
-        print("Must specify a port to listen.")
-        sys.exit(1)
+    # if not args.port and not args.emulate:
+    #     print("Must specify a port to listen.")
+    #     sys.exit(1)
     ve = VEDirect(args.port, args.timeout, args.emulate.upper())
     ve.read_data_callback(print_data_callback, args.n)
 
